@@ -1,14 +1,10 @@
 import { User } from './models/User';
 
-const user = new User({ name: 'myname', age: 20 });
+const user = new User({ id: 1 });
 
 // user.set({ name: 'newname' });
 
-user.on('change', () => {
-  console.log('change event');
-});
-
-user.trigger('change');
+user.fetch();
 
 // console.log(user.get('name'));
 // console.log(user.get('age'));
