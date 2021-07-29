@@ -1,4 +1,7 @@
 import { Model } from './Model';
+import { Attribute } from './Attributes';
+import { Eventing } from './Eventing';
+import { Sync } from './sync';
 
 export interface UserProps {
   name?: string;
@@ -8,4 +11,12 @@ export interface UserProps {
 
 const rootUrl = 'http://localhost:3000/users';
 
-export class User extends Model<UserProps> {}
+export class User extends Model<UserProps> {
+  static buildBuild(attrs: UserProps): User {
+    return new User(
+      new Attribute<UserProps>(attrs),
+      new Eventing(),
+      new Sync<UserProps>(rootUrl)
+    );
+  }
+}
