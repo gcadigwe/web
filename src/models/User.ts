@@ -1,7 +1,4 @@
-import { Eventing } from './Eventing';
-import { Sync } from './sync';
-import { Attribute } from './Attributes';
-import { AxiosResponse } from 'axios';
+import { Model } from './Model';
 
 export interface UserProps {
   name?: string;
@@ -11,12 +8,4 @@ export interface UserProps {
 
 const rootUrl = 'http://localhost:3000/users';
 
-export class User {
-  public events: Eventing = new Eventing();
-  public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-  public attribute: Attribute<UserProps>;
-
-  constructor(attrs: UserProps) {
-    this.attribute = new Attribute<UserProps>(attrs);
-  }
-}
+export class User extends Model<UserProps> {}
