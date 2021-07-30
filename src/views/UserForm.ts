@@ -11,9 +11,10 @@ export class UserForm {
     };
   }
 
-  onsetAge(): void {
-    console.log('button was clicked');
-  }
+  onsetAge = (): void => {
+    this.model.setRandomAge();
+    console.log(this.model.get('age'));
+  };
 
   onButtonClick(): void {
     console.log('hi there');
